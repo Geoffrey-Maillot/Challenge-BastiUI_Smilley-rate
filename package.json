@@ -1,0 +1,26 @@
+{
+  "name": "parcel-Typescript-Model",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "description": "Model Parcel Typescript Scss",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "clean": "rm -rf dist .parcel-cache",
+    "clean:all": "rm -rf dist .parcel-cache node_modules yarn.lock "
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "parcel": "^2.5.0",
+    "prettier": "^2.6.2"
+  }
+}
