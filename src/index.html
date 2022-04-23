@@ -5,29 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="./styles/reset.scss" />
     <link rel="stylesheet" href="./styles/styles.scss" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
     <script type="module" src="app.ts"></script>
-    <title>Parcel-Model</title>
+    <title>Challenge Basti Ui</title>
   </head>
   <body>
     <div class="container">
-      <h1 class="title"></h1>
-      <div class="logo-container">
-        <div class="logo">
-          <img src="./assets/parcel.png" alt="Logo parcel" />
+      <!--Card-->
+      <div class="card">
+        <!--Button close-->
+        <button class="button-close">
+          <span
+            ><svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M7 7L13 1M7 7L13 13M7 7L1 13M7 7L1 1" stroke="white" />
+            </svg>
+          </span>
+          Passer
+        </button>
+        <div class="rotate">
+          <img src="./assets/Love.svg" alt="Logo love" />
         </div>
-        <div class="logo">
-          <img src="./assets/typescript.png" alt="Logo Typescript" />
+        <!--Card content-->
+        <div class="card-content">
+          <p class="text-top">
+            Bravo Geoffrey tu viens de télécharger Bootstrap v5.1.3
+          </p>
+          <p class="text-middle">Dis-nous ce que tu en as pensé !</p>
+          <!--Smilleys-->
+          <div class="smilleys">
+            <div class="smilley-container">
+              <input type="radio" name="smiley" value="1" />
+              <div class="smilley-item one" data-item="1">
+                <div class="eyebrow"></div>
+                <div class="eyes"></div>
+                <div class="mouth"></div>
+              </div>
+            </div>
+            <div class="smilley-container">
+              <input type="radio" name="smiley" value="2" />
+              <div class="smilley-item two" data-item="2">
+                <div class="eyes"></div>
+                <div class="mouth"></div>
+              </div>
+            </div>
+            <div class="smilley-container">
+              <input type="radio" name="smiley" value="3" />
+              <div class="smilley-item three" data-item="3">
+                <div class="eyes"></div>
+                <div class="mouth"></div>
+              </div>
+            </div>
+            <div class="smilley-container">
+              <input type="radio" name="smiley" value="4" />
+              <div class="smilley-item four" data-item="4">
+                <div class="eyes"></div>
+                <div class="mouth"></div>
+              </div>
+            </div>
+            <div class="smilley-container">
+              <input type="radio" name="smiley" value="5" />
+              <div class="smilley-item five" data-item="=5">
+                <div class="eyes"></div>
+                <div class="mouth"></div>
+              </div>
+            </div>
+          </div>
+          <p class="text-bottom">4/5 -- Au top !</p>
         </div>
-        <div class="logo">
-          <img src="./assets/scss.png" alt="Logo Scss" />
+        <!--Button send-->
+        <div class="button-container">
+          <button class="button-send">Envoyer</button>
         </div>
       </div>
     </div>
