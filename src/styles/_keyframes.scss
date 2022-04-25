@@ -1,0 +1,156 @@
+// Background top entrance
+@keyframes bgTopIn {
+  from {
+    background-position: -40px 93px;
+    opacity: 0;
+  }
+  to {
+    background-position: -3px 93px;
+    opacity: 100;
+  }
+}
+// Background bottom entrance
+@keyframes bgBottomIn {
+  from {
+    transform: translate(-89px, 220px) rotate(-9deg);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-89px, 191px) rotate(-9deg);
+    opacity: 100;
+  }
+}
+
+// Button "Envoyer" clicked =>
+@keyframes cardSend {
+  0% {
+    transform: translate(12px, -8px);
+    opacity: 100;
+  }
+  80% {
+    transform: translate(0, 0);
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bgBottomOut {
+  from {
+    transform: translate(-89px, 191px) rotate(-9deg);
+    opacity: 100;
+  }
+  to {
+    transform: translate(-89px, 220px) rotate(-9deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bgTopOut {
+  from {
+    background-position: -3px 93px;
+    opacity: 100;
+  }
+  to {
+    background-position: -40px 93px;
+    opacity: 0;
+  }
+}
+
+// Card entrance  =>
+@keyframes cardEntrance {
+  0% {
+    width: 0;
+    height: 0;
+    padding: 0;
+  }
+  25% {
+    padding: 164px 48px 0 48px;
+  }
+  100% {
+    width: 100%;
+    height: 620px;
+  }
+}
+
+@keyframes translateCard {
+  from {
+    transform: translate(0, 0);
+    box-shadow: 0 0 0 -4px #00232b, -0 0 0 0 #fff;
+  }
+  to {
+    transform: translate(12px, -8px);
+    box-shadow: -20px 16px 0 -4px #00232b, -20px 16px 0 0 #fff;
+  }
+}
+
+@keyframes displayCardContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+// Card Out =>
+@keyframes cardOut {
+  from {
+    transform: translate(12px, -8px);
+    opacity: 100;
+  }
+  to {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes hideCardContent {
+  from {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+// Logo
+@keyframes opacityLogo {
+  from {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+// Logo rotate
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Eyes Animation
+@keyframes closeEyes {
+  0% {
+    height: 8px;
+    top: 0px;
+  }
+  90% {
+    height: 8px;
+    top: 0px;
+  }
+  95% {
+    height: 3px;
+    top: 1px;
+  }
+  100% {
+    height: 8px;
+    top: 0px;
+  }
+}

@@ -1,6 +1,7 @@
 @use './fonts';
 @use './reset';
 @use './vars';
+@use './keyframes';
 
 body {
   font-family: 'Neue Machina', sans-serif;
@@ -19,11 +20,36 @@ body {
   max-width: 850px;
   height: 810px;
   background-color: var(--background-2);
-
+  background: url(../assets/bg1.svg) -3px 93px / 19% no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+  animation: bgTopIn 0.5s both linear;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 120%;
+    height: 100%;
+    transform: translate(-89px, 191px) rotate(-9deg);
+    z-index: 0;
+    background: url(../assets/bg2.svg) left 100% / 100% no-repeat;
+    animation: bgBottomIn 0.5s both linear;
+  }
 }
+
+.container--out {
+  animation: bgTopOut 0.3s both linear;
+}
+
+.container--out::before {
+  animation: bgBottomOut 0.4s both linear;
+}
+
 // Wrapper to hide button send
 .wrapper {
   width: 100%;
@@ -41,26 +67,26 @@ body {
   padding: 164px 48px 0 48px;
   transition: all 0.3s;
   background-color: var(--background-1);
-  animation: cardEntrance .8s linear, translateCard 0.2s 1s both linear;
-isolation: isolate;
-  z-index: 10;
-  
-
-  &::after {
-  content: '';
- display: block;
-  background-color: var(--background-1);
-  position: absolute;
-  inset: 0;
-  border: 4px solid #fff;
-  animation: translateBeforeCard 0.2s both linear;
-  animation-delay: 1s;
-  z-index:-1;
+  animation: cardEntrance 0.8s linear, translateCard 0.2s 1s both linear;
+  isolation: isolate;
+  box-shadow: -20px 16px 0 -4px #00232b, -20px 16px 0 0 #fff;
 }
+
+.card--send *:not(input) {
+  animation: hideCardContent 0.4s linear both !important;
+}
+
+.card--send {
+  animation: cardSend 0.6s both linear;
+}
+
+//? Modifier ::before par shadow
+.card--send::before {
+  animation: cardSend--before 0.6s both linear;
 }
 
 .card *:not(input, .rotate--rotate) {
-  animation: displayCardContent .2s both linear; 
+  animation: displayCardContent 0.2s both linear;
   animation-delay: 1s;
 }
 
@@ -68,32 +94,8 @@ isolation: isolate;
   padding-top: 132px;
 }
 
-@keyframes cardEntrance {
-  0% {width: 0; height: 0; padding: 0;}
-  25% {padding: 164px 48px 0 48px;}
-  100% {width: 100%; height: 620px;}
-}
-
-@keyframes displayCardContent {
-  from{opacity: 0;}
-  to {opacity: 100;}
-}
-
-@keyframes translateBeforeCard {
-  from{transform: translate(0, 0) };
-  to {transform: translate(-24px, 16px);}
-}
-@keyframes translateCard {
-  from{transform: translate(0, 0) };
-  to {transform: translate(12px, -8px);}
-}
-
-@keyframes cardOut {
-   from{transform: translate(12px, -8px); opacity: 100;}
-    to{transform: translateY(1000px); opacity: 0;}
-}
 .card-out {
-  animation: cardOut .5s  both ease-in ;
+  animation: cardOut 0.5s both ease-in;
 }
 
 // BUTTON CLOSE
@@ -109,7 +111,6 @@ isolation: isolate;
   border: none;
   outline: none;
   color: #fff;
-  z-index: 10;
   overflow: hidden;
 
   span {
@@ -121,54 +122,45 @@ isolation: isolate;
     width: 24px;
     height: 24px;
     display: flex;
-  justify-content: center;
-  align-items: center;
-   
+    justify-content: center;
+    align-items: center;
   }
 
   &:hover::before {
-  transform: translateX(-8px) skewX(-22deg);
-}
+    transform: translateX(-8px) skewX(-22deg);
+  }
 
   &::before {
-  content: '';
-  width: 150%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: auto;
-  transform: translateX(-140px) skew(-22deg);
-  background-color: var(--background-3);
-  z-index: -1;
-  transition: all .4s;
-}
+    content: '';
+    width: 150%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    transform: translateX(-140px) skew(-22deg);
+    background-color: var(--background-3);
+    z-index: -1;
+    transition: all 0.4s;
+  }
 }
 
 // LOGO ROTATE
 .rotate {
- position: absolute;
+  position: absolute;
   top: -18px;
   right: -64px;
 
   &--rotate {
-  animation: rotate 15s 1.5s both infinite linear;
-}
-  &--fix {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-10deg);
-  z-index: 10;
-}
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0);
+    animation: rotate 15s 1.5s both infinite linear;
   }
-  to {
-    transform: rotate(360deg);
+  &--fix {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+    z-index: 10;
+    animation: opacityLogo 10s both linear infinite alternate !important;
   }
 }
 
@@ -192,14 +184,13 @@ isolation: isolate;
 }
 
 .smilley-container {
-  max-width : 24%;
+  max-width: 24%;
   padding: 8px;
   position: relative;
   z-index: 0;
   flex-grow: 1;
   flex-basis: auto;
   flex-shrink: 1;
-
 
   input {
     position: absolute;
@@ -214,7 +205,6 @@ isolation: isolate;
     }
   }
 
-
   &:hover .eyebrow,
   &:hover .eyes,
   &:hover .mouth {
@@ -223,14 +213,10 @@ isolation: isolate;
 }
 
 // Input selected
-.selected--smilley {
-  border: 8px solid #fff;
-}
+
 .selected--smilley div {
   transform: translateX(-5px);
 }
-
-
 
 .smilley-item {
   width: 56px;
@@ -239,23 +225,31 @@ isolation: isolate;
   position: relative;
   box-sizing: content-box;
 }
+.selected--smilley {
+  border: 8px solid #fff;
+}
+.unselected--smilley {
+  opacity: 0.5 !important;
+}
 
 .smilley-item div {
   box-sizing: border-box;
-
 }
 
 .smilley-item.one {
-  background: #FF5A36;
+  background: #ff5a36;
 }
 .smilley-item.two {
-  background: #FF833E;
-}.smilley-item.three {
-  background: #FFC061;
-}.smilley-item.four {
-  background: #FFD43E;
-}.smilley-item.five {
-  background: #FFED4E;
+  background: #ff833e;
+}
+.smilley-item.three {
+  background: #ffc061;
+}
+.smilley-item.four {
+  background: #ffd43e;
+}
+.smilley-item.five {
+  background: #ffed4e;
 }
 // SMILLEY CONTENT
 
@@ -268,8 +262,6 @@ isolation: isolate;
   right: 2px;
   transition: all 0.3s linear;
 
-
-
   &::before {
     content: '';
     position: absolute;
@@ -279,8 +271,7 @@ isolation: isolate;
     height: 8px;
     border-radius: 50%;
     background-color: var(--background-2);
-        animation: closeEyes 2s 2s both infinite linear;
-
+    animation: closeEyes 2s 2s both infinite linear;
   }
 
   &::after {
@@ -294,13 +285,6 @@ isolation: isolate;
     background-color: var(--background-2);
     animation: closeEyes 2s 2s both infinite linear;
   }
-}
- // Eyes Animation
-@keyframes closeEyes {
-  0% {height: 8px; top: 0px;}
-  90% {height: 8px; top: 0px;}
-  95% {height: 3px; top: 1px;}
-  100% {height: 8px; top: 0px;}
 }
 
 .smilley-item.one .eyes {
@@ -420,8 +404,8 @@ isolation: isolate;
   z-index: 5;
 
   &:hover::before {
-transform: translateX(540px) skewX(-22deg);
-}
+    transform: translateX(540px) skewX(-22deg);
+  }
 
   &::before {
     content: '';
@@ -431,9 +415,9 @@ transform: translateX(540px) skewX(-22deg);
     height: 100%;
     background-color: var(--accent);
     transform: skew(-22deg);
-    transition: all .4s;
+    transition: all 0.4s;
     z-index: -1;
-}
+  }
 }
 
 .button-send.active {
