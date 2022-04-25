@@ -4,8 +4,12 @@ const card: HTMLDivElement = document.querySelector('.card')!;
 const bottomButton: HTMLButtonElement = document.querySelector('.button-send')!;
 const textRate: HTMLParagraphElement = document.querySelector('.text-bottom')!;
 const smileyItems: NodeListOf<HTMLDivElement> = document.querySelectorAll('.smilley-item')!;
+const buttonClose: HTMLButtonElement = document.querySelector('.button-close')!;
 
-// Rate array
+console.log(buttonClose)
+
+
+// Rates
 const rate = [
   '1/5 - Pignolesque',
   '2/5 - Bof bof...',
@@ -55,8 +59,6 @@ const unselectRate = (numInput: string): void => {
   smilleyItem.classList.remove('selected--smilley')
 })
 
-  
-
   previousRate = ''
 }
 
@@ -73,4 +75,18 @@ unselectRate(value);
 
 }
 
+const closeCardAnimation = () => {
+  console.log('card-out')
+  card.classList.add('card-out')
+} 
+// EVENTS
+buttonClose.addEventListener('click', closeCardAnimation)
 inputs.forEach((input) => input.addEventListener('click', onChangeInput))
+
+
+
+//! Ne marche pas, l'event mouseenter n'est pas capté
+const resetAnimation = (e: MouseEvent): void => {
+console.log (e)
+}
+smileyItems.forEach((smilley) => smilley.addEventListener('mouseenter', resetAnimation))
